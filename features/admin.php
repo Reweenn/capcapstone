@@ -162,30 +162,7 @@ $conn->close();
             </ul>
         </div>
 
-        <!-- Tuition Form -->
-        <div class="card my-4">
-            <div class="card-header">Add Tuition</div>
-            <div class="card-body">
-                <form action="" method="POST">
-                    <div class="mb-3">
-                        <label for="student_id" class="form-label">Student ID:</label>
-                        <input type="number" id="student_id" name="student_id" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="amount" class="form-label">Tuition Amount:</label>
-                        <input type="number" id="amount" name="amount" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="status" class="form-label">Status:</label>
-                        <select id="status" name="status" class="form-select" required>
-                            <option value="Paid">Paid</option>
-                            <option value="Pending">Pending</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add Tuition</button>
-                </form>
-            </div>
-        </div>
+      
 
         <!-- Tuition Records -->
         <div class="card">
