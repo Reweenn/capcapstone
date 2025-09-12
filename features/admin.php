@@ -144,8 +144,8 @@ $conn->close();
                 <p class="fs-3"><?php echo $total_staff; ?></p>
             </div>
             <div class="card">
-                <h4>Total Revenue</h4>
-                <p class="fs-3">$<?php echo number_format($total_revenue, 2); ?></p>
+                <h4>Total School Income</h4>
+                <p class="fs-3">P<?php echo number_format($total_revenue, 2); ?></p>
             </div>
         </div>
 
