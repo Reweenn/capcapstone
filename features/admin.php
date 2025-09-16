@@ -7,6 +7,15 @@ if (!isset($_SESSION['admin_id'])) {
 }
 include '../db.php'; // Correct relative path to db.php
 
+// Fetch admin name
+$admin_id = $_SESSION['admin_id'];
+$admin_name_query = $conn->prepare("SELECT username FROM admins WHERE id = ?");
+$admin_name_query->bind_param("i", $admin_id);
+$admin_name_query->execute();
+$admin_name_result = $admin_name_query->get_result();
+$admin_name = $admin_name_result->fetch_assoc()['username'];
+$admin_name_query->close();
+
 // Fetch statistics
 $total_students = $conn->query("SELECT COUNT(*) AS total FROM students")->fetch_assoc()['total'];
 $total_staff = $conn->query("SELECT COUNT(*) AS total FROM staff")->fetch_assoc()['total'];
@@ -67,6 +76,7 @@ $conn->close();
             border: none;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
         }
         .card-header {
             background-color: #007bff;
@@ -131,7 +141,7 @@ $conn->close();
 
     <!-- Main Content -->
     <div class="container">
-        <h2 class="text-center my-4">Admin Dashboard</h2>
+        <h2 class="text-center my-4">Welcome, <?php echo htmlspecialchars($admin_name); ?>!</h2>
 
         <!-- Statistics -->
         <div class="stats">
@@ -161,8 +171,6 @@ $conn->close();
                 <?php endwhile; ?>
             </ul>
         </div>
-
-      
 
         <!-- Tuition Records -->
         <div class="card">
@@ -194,7 +202,6 @@ $conn->close();
         </div>
     </div>
 
-    <!-- Include Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
